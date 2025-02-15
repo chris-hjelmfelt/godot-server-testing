@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c78by7hc4fmwx"]
+
+[ext_resource type="Texture2D" uid="uid://c7x2dbaxn7hl" path="res://images/plant.png" id="3_53kum"]
+[ext_resource type="Texture2D" uid="uid://cynlb4kx6kxjn" path="res://images/rock.png" id="4_l6pm2"]
+[ext_resource type="Script" path="res://player.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://dd828y8uf53sm" path="res://images/Character1.png" id="5_e2gyy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4fp2"]
+radius = 8.0
+height = 44.0
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(959, 546)
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("5")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+visible = false
+position = Vector2(3, 59)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_t4fp2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("5_e2gyy")
+
+[node name="Plant" type="Sprite2D" parent="."]
+position = Vector2(846, 562)
+texture = ExtResource("3_53kum")
+
+[node name="Rock" type="Sprite2D" parent="."]
+position = Vector2(1058, 574)
+texture = ExtResource("4_l6pm2")

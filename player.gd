@@ -17,3 +17,5 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
+	
+	$"../CanvasLayer/UI/FPS".text = str(Engine.get_frames_per_second())

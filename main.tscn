@@ -1,36 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://c78by7hc4fmwx"]
+[gd_scene load_steps=8 format=3 uid="uid://c78by7hc4fmwx"]
 
+[ext_resource type="Texture2D" uid="uid://c7x2dbaxn7hl" path="res://images/plant.png" id="3_53kum"]
 [ext_resource type="Script" path="res://multiples.gd" id="3_rsoua"]
+[ext_resource type="Texture2D" uid="uid://cynlb4kx6kxjn" path="res://images/rock.png" id="4_l6pm2"]
 [ext_resource type="Script" path="res://player.gd" id="5"]
 [ext_resource type="Texture2D" uid="uid://dd828y8uf53sm" path="res://images/Character1.png" id="5_e2gyy"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4fp2"]
-radius = 8.0
-height = 44.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_l4tei"]
 font_size = 30
 font_color = Color(1, 0.25098, 0.0823529, 1)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4fp2"]
+radius = 8.0
+height = 44.0
+
 [node name="Main" type="Node2D"]
-
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(959, 546)
-scale = Vector2(0.5, 0.5)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("5")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-visible = false
-position = Vector2(3, 59)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_t4fp2")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("5_e2gyy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -58,5 +42,136 @@ label_settings = SubResource("LabelSettings_l4tei")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Objects" type="Node2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
+z_index = 1
+position = Vector2(959, 546)
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("5")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+visible = false
+position = Vector2(3, 59)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_t4fp2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("5_e2gyy")
+
+[node name="ThingManager" type="Node2D" parent="."]
 script = ExtResource("3_rsoua")
+
+[node name="Plants" type="Node2D" parent="."]
+
+[node name="Plant" type="Sprite2D" parent="Plants"]
+position = Vector2(146, 303)
+texture = ExtResource("3_53kum")
+
+[node name="Plant2" type="Sprite2D" parent="Plants"]
+position = Vector2(180, 334)
+texture = ExtResource("3_53kum")
+
+[node name="Plant3" type="Sprite2D" parent="Plants"]
+position = Vector2(644, 714)
+texture = ExtResource("3_53kum")
+
+[node name="Plant4" type="Sprite2D" parent="Plants"]
+position = Vector2(683, 535)
+texture = ExtResource("3_53kum")
+
+[node name="Plant5" type="Sprite2D" parent="Plants"]
+position = Vector2(1438, 473)
+texture = ExtResource("3_53kum")
+
+[node name="Plant6" type="Sprite2D" parent="Plants"]
+position = Vector2(1290, 628)
+texture = ExtResource("3_53kum")
+
+[node name="Plant7" type="Sprite2D" parent="Plants"]
+position = Vector2(1263, 648)
+texture = ExtResource("3_53kum")
+
+[node name="Plant8" type="Sprite2D" parent="Plants"]
+position = Vector2(1369, 904)
+texture = ExtResource("3_53kum")
+
+[node name="Plant9" type="Sprite2D" parent="Plants"]
+position = Vector2(182, 939)
+texture = ExtResource("3_53kum")
+
+[node name="Plant10" type="Sprite2D" parent="Plants"]
+position = Vector2(281, 699)
+texture = ExtResource("3_53kum")
+
+[node name="Plant11" type="Sprite2D" parent="Plants"]
+position = Vector2(661, 743)
+texture = ExtResource("3_53kum")
+
+[node name="Plant12" type="Sprite2D" parent="Plants"]
+position = Vector2(1149, 289)
+texture = ExtResource("3_53kum")
+
+[node name="Plant13" type="Sprite2D" parent="Plants"]
+position = Vector2(1814, 121)
+texture = ExtResource("3_53kum")
+
+[node name="Plant14" type="Sprite2D" parent="Plants"]
+position = Vector2(444, 74)
+texture = ExtResource("3_53kum")
+
+[node name="Rocks" type="Node2D" parent="."]
+
+[node name="Rock" type="Sprite2D" parent="Rocks"]
+position = Vector2(472, 97)
+texture = ExtResource("4_l6pm2")
+
+[node name="Rock2" type="Sprite2D" parent="Rocks"]
+position = Vector2(575, 566)
+texture = ExtResource("4_l6pm2")
+
+[node name="Rock3" type="Sprite2D" parent="Rocks"]
+position = Vector2(1272, 825)
+texture = ExtResource("4_l6pm2")
+
+[node name="Rock4" type="Sprite2D" parent="Rocks"]
+position = Vector2(1578, 345)
+texture = ExtResource("4_l6pm2")
+
+[node name="Rock5" type="Sprite2D" parent="Rocks"]
+position = Vector2(551, 578)
+texture = ExtResource("4_l6pm2")
+
+[node name="Rock6" type="Sprite2D" parent="Rocks"]
+position = Vector2(1712, 768)
+texture = ExtResource("4_l6pm2")
+
+[node name="Rock7" type="Sprite2D" parent="Rocks"]
+position = Vector2(1664, 816)
+texture = ExtResource("4_l6pm2")
+
+[node name="Rock8" type="Sprite2D" parent="Rocks"]
+position = Vector2(180, 116)
+texture = ExtResource("4_l6pm2")
+
+[node name="Rock9" type="Sprite2D" parent="Rocks"]
+position = Vector2(1300, 207)
+texture = ExtResource("4_l6pm2")
+
+[node name="Rock10" type="Sprite2D" parent="Rocks"]
+position = Vector2(282, 1042)
+texture = ExtResource("4_l6pm2")
+
+[node name="Rock11" type="Sprite2D" parent="Rocks"]
+position = Vector2(351, 944)
+texture = ExtResource("4_l6pm2")
+
+[node name="Rock12" type="Sprite2D" parent="Rocks"]
+position = Vector2(772, 946)
+texture = ExtResource("4_l6pm2")
+
+[node name="Rock13" type="Sprite2D" parent="Rocks"]
+position = Vector2(413, 378)
+texture = ExtResource("4_l6pm2")

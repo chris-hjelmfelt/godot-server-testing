@@ -1,6 +1,7 @@
 extends Node2D
 
-const COUNT: int = 400
+@export var trade: bool = true
+const COUNT: int = 1000
 const thing_images: Array = [preload("res://images/plant.png"), preload("res://images/rock.png")]
 var things: Array = []
 var shape
@@ -16,27 +17,23 @@ func _ready():
 	shape = PhysicsServer2D.circle_shape_create()
 	PhysicsServer2D.shape_set_data(shape, 20)
 	
-	for _i in COUNT:
-		var location = Vector2(
-			randf_range(0, get_viewport_rect().size.x),
-			randf_range(0, get_viewport_rect().size.y)
-		)
-		
-		var image = thing_images[randi() % 2]
-		var thing = Thing.new()
-		thing.body = PhysicsServer2D.body_create()
-		thing.position = location
-		thing.image = image
-
-		PhysicsServer2D.body_set_space(thing.body, get_world_2d().get_space())
-		PhysicsServer2D.body_add_shape(thing.body, shape)
-		PhysicsServer2D.body_set_collision_mask(thing.body, 0)  # doesn't collide with other "things"
-
-		var transform2d = Transform2D()
-		transform2d.origin = thing.position
-		PhysicsServer2D.body_set_state(thing.body, PhysicsServer2D.BODY_STATE_TRANSFORM, transform2d)
-
-		things.push_back(thing)
+	if trade == true:
+		for plant in $"../Plants".get_children():
+			var location = plant.position
+			plant.queue_free()
+			create_thing(location, plant.texture)
+		for rock in $"../Rocks".get_children():
+			var location = rock.position
+			rock.queue_free()
+			create_thing(location, rock.texture)
+	else:
+		for _i in COUNT:
+			var location = Vector2(
+				randf_range(0, get_viewport_rect().size.x),
+				randf_range(0, get_viewport_rect().size.y)
+			)
+			var image = thing_images[randi() % 2]
+			create_thing(location, image)
 	things.sort_custom(organize_array)
 
 
@@ -58,6 +55,23 @@ func organize_array(element_1: Thing, element_2: Thing) -> bool:
 	elif  element_1.position.y == element_2.position.y and element_1.position.x < element_2.position.x:
 		return true
 	return false
+
+
+func create_thing(location: Vector2, image: CompressedTexture2D):
+	var thing = Thing.new()
+	thing.body = PhysicsServer2D.body_create()
+	thing.position = location
+	thing.image = image
+
+	PhysicsServer2D.body_set_space(thing.body, get_world_2d().get_space())
+	PhysicsServer2D.body_add_shape(thing.body, shape)
+	PhysicsServer2D.body_set_collision_mask(thing.body, 0)  # don't collide with other "things"
+
+	var transform2d = Transform2D()
+	transform2d.origin = thing.position
+	PhysicsServer2D.body_set_state(thing.body, PhysicsServer2D.BODY_STATE_TRANSFORM, transform2d)
+
+	things.push_back(thing)
 
 
 func _draw():

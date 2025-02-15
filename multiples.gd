@@ -1,10 +1,12 @@
 extends Node2D
 
-@export var trade: bool = true
+@export var trade: bool = false
 const COUNT: int = 1000
 const thing_images: Array = [preload("res://images/plant.png"), preload("res://images/rock.png")]
 var things: Array = []
 var shape
+var barepatch: Vector2 = Vector2(1000,400)
+var baresize: int = 100
 
 
 class Thing:
@@ -32,8 +34,11 @@ func _ready():
 				randf_range(0, get_viewport_rect().size.x),
 				randf_range(0, get_viewport_rect().size.y)
 			)
-			var image = thing_images[randi() % 2]
-			create_thing(location, image)
+			if location.x < barepatch.x + baresize and location.x > barepatch.x - baresize and location.y < barepatch.y + baresize and location.y > barepatch.y - baresize:
+				pass  # skip these
+			else:
+				var image = thing_images[randi() % 2]
+				create_thing(location, image)
 	things.sort_custom(organize_array)
 
 
@@ -65,12 +70,13 @@ func create_thing(location: Vector2, image: CompressedTexture2D):
 
 	PhysicsServer2D.body_set_space(thing.body, get_world_2d().get_space())
 	PhysicsServer2D.body_add_shape(thing.body, shape)
-	PhysicsServer2D.body_set_collision_mask(thing.body, 0)  # don't collide with other "things"
-
+	PhysicsServer2D.body_set_collision_layer(thing.body, 1)
+	PhysicsServer2D.body_set_collision_mask(thing.body, 0)
+	
 	var transform2d = Transform2D()
 	transform2d.origin = thing.position
 	PhysicsServer2D.body_set_state(thing.body, PhysicsServer2D.BODY_STATE_TRANSFORM, transform2d)
-
+	
 	things.push_back(thing)
 
 

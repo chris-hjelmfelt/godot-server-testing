@@ -4,6 +4,7 @@ extends Node2D
 const COUNT: int = 1000
 const thing_images: Array = [preload("res://images/plant.png"), preload("res://images/rock.png")]
 var things: Array = []
+var shape
 var barepatch: Vector2 = Vector2(1000,400)
 var baresize: int = 100
 
@@ -15,6 +16,8 @@ class Thing:
 
 
 func _ready():
+	shape = PhysicsServer2D.circle_shape_create()
+	PhysicsServer2D.shape_set_data(shape, 20)
 	
 	if trade == true:
 		for plant in $"../Plants".get_children():
@@ -43,6 +46,13 @@ func _process(_delta):
 	queue_redraw()
 
 
+func _physics_process(_delta):
+	var transform2d = Transform2D()
+	for thing in things:
+		transform2d.origin = thing.position
+		PhysicsServer2D.body_set_state(thing.body, PhysicsServer2D.BODY_STATE_TRANSFORM, transform2d)
+
+
 # Arrange the array so items with the lowest y-axis values are drawn first
 func organize_array(element_1: Thing, element_2: Thing) -> bool:
 	if element_1.position.y < element_2.position.y:
@@ -54,8 +64,18 @@ func organize_array(element_1: Thing, element_2: Thing) -> bool:
 
 func create_thing(location: Vector2, image: CompressedTexture2D):
 	var thing = Thing.new()
+	thing.body = PhysicsServer2D.body_create()
 	thing.position = location
 	thing.image = image
+
+	PhysicsServer2D.body_set_space(thing.body, get_world_2d().get_space())
+	PhysicsServer2D.body_add_shape(thing.body, shape)
+	PhysicsServer2D.body_set_collision_layer(thing.body, 1)
+	PhysicsServer2D.body_set_collision_mask(thing.body, 0)
+	
+	var transform2d = Transform2D()
+	transform2d.origin = thing.position
+	PhysicsServer2D.body_set_state(thing.body, PhysicsServer2D.BODY_STATE_TRANSFORM, transform2d)
 	
 	things.push_back(thing)
 
@@ -69,4 +89,9 @@ func _draw():
 
 # Cleanup
 func _exit_tree():
+	for thing in things:
+		PhysicsServer2D.free_rid(thing.body)
+
+	PhysicsServer2D.free_rid(shape)
 	things.clear()
+

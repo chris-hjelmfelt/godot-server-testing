@@ -45,7 +45,7 @@ vertical_alignment = 2
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(959, 546)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("5")
@@ -64,119 +64,151 @@ texture = ExtResource("5_e2gyy")
 [node name="ThingManager" type="Node2D" parent="."]
 z_index = -10
 script = ExtResource("3_rsoua")
-
-[node name="Plants" type="Node2D" parent="."]
-
-[node name="Plant" type="Sprite2D" parent="Plants"]
-position = Vector2(146, 303)
-texture = ExtResource("3_53kum")
-
-[node name="Plant2" type="Sprite2D" parent="Plants"]
-position = Vector2(180, 334)
-texture = ExtResource("3_53kum")
-
-[node name="Plant3" type="Sprite2D" parent="Plants"]
-position = Vector2(644, 714)
-texture = ExtResource("3_53kum")
-
-[node name="Plant4" type="Sprite2D" parent="Plants"]
-position = Vector2(683, 535)
-texture = ExtResource("3_53kum")
-
-[node name="Plant5" type="Sprite2D" parent="Plants"]
-position = Vector2(1438, 473)
-texture = ExtResource("3_53kum")
-
-[node name="Plant6" type="Sprite2D" parent="Plants"]
-position = Vector2(1290, 628)
-texture = ExtResource("3_53kum")
-
-[node name="Plant7" type="Sprite2D" parent="Plants"]
-position = Vector2(1263, 648)
-texture = ExtResource("3_53kum")
-
-[node name="Plant8" type="Sprite2D" parent="Plants"]
-position = Vector2(1369, 904)
-texture = ExtResource("3_53kum")
-
-[node name="Plant9" type="Sprite2D" parent="Plants"]
-position = Vector2(182, 939)
-texture = ExtResource("3_53kum")
-
-[node name="Plant10" type="Sprite2D" parent="Plants"]
-position = Vector2(281, 699)
-texture = ExtResource("3_53kum")
-
-[node name="Plant11" type="Sprite2D" parent="Plants"]
-position = Vector2(661, 743)
-texture = ExtResource("3_53kum")
-
-[node name="Plant12" type="Sprite2D" parent="Plants"]
-position = Vector2(1149, 289)
-texture = ExtResource("3_53kum")
-
-[node name="Plant13" type="Sprite2D" parent="Plants"]
-position = Vector2(1814, 121)
-texture = ExtResource("3_53kum")
-
-[node name="Plant14" type="Sprite2D" parent="Plants"]
-position = Vector2(444, 74)
-texture = ExtResource("3_53kum")
-
-[node name="Rocks" type="Node2D" parent="."]
-
-[node name="Rock" type="Sprite2D" parent="Rocks"]
-position = Vector2(472, 97)
-texture = ExtResource("4_l6pm2")
-
-[node name="Rock2" type="Sprite2D" parent="Rocks"]
-position = Vector2(575, 566)
-texture = ExtResource("4_l6pm2")
-
-[node name="Rock3" type="Sprite2D" parent="Rocks"]
-position = Vector2(1272, 825)
-texture = ExtResource("4_l6pm2")
-
-[node name="Rock4" type="Sprite2D" parent="Rocks"]
-position = Vector2(1578, 345)
-texture = ExtResource("4_l6pm2")
-
-[node name="Rock5" type="Sprite2D" parent="Rocks"]
-position = Vector2(551, 578)
-texture = ExtResource("4_l6pm2")
-
-[node name="Rock6" type="Sprite2D" parent="Rocks"]
-position = Vector2(1712, 768)
-texture = ExtResource("4_l6pm2")
-
-[node name="Rock7" type="Sprite2D" parent="Rocks"]
-position = Vector2(1664, 816)
-texture = ExtResource("4_l6pm2")
-
-[node name="Rock8" type="Sprite2D" parent="Rocks"]
-position = Vector2(180, 116)
-texture = ExtResource("4_l6pm2")
-
-[node name="Rock9" type="Sprite2D" parent="Rocks"]
-position = Vector2(1300, 207)
-texture = ExtResource("4_l6pm2")
-
-[node name="Rock10" type="Sprite2D" parent="Rocks"]
-position = Vector2(282, 1042)
-texture = ExtResource("4_l6pm2")
-
-[node name="Rock11" type="Sprite2D" parent="Rocks"]
-position = Vector2(351, 944)
-texture = ExtResource("4_l6pm2")
-
-[node name="Rock12" type="Sprite2D" parent="Rocks"]
-position = Vector2(772, 946)
-texture = ExtResource("4_l6pm2")
-
-[node name="Rock13" type="Sprite2D" parent="Rocks"]
-position = Vector2(413, 378)
-texture = ExtResource("4_l6pm2")
+count = 400
+size_modifer = 0.5
 
 [node name="Marker" type="Sprite2D" parent="."]
 position = Vector2(1000, 400)
 texture = ExtResource("6_iffwp")
+
+[node name="Ground Cover" type="Node2D" parent="."]
+visible = false
+
+[node name="Plants" type="Node2D" parent="Ground Cover"]
+
+[node name="Plant" type="Sprite2D" parent="Ground Cover/Plants"]
+position = Vector2(146, 303)
+texture = ExtResource("3_53kum")
+offset = Vector2(0, -28)
+
+[node name="Plant2" type="Sprite2D" parent="Ground Cover/Plants"]
+position = Vector2(180, 334)
+texture = ExtResource("3_53kum")
+offset = Vector2(0, -28)
+
+[node name="Plant3" type="Sprite2D" parent="Ground Cover/Plants"]
+position = Vector2(644, 714)
+texture = ExtResource("3_53kum")
+offset = Vector2(0, -28)
+
+[node name="Plant4" type="Sprite2D" parent="Ground Cover/Plants"]
+position = Vector2(683, 535)
+texture = ExtResource("3_53kum")
+offset = Vector2(0, -28)
+
+[node name="Plant5" type="Sprite2D" parent="Ground Cover/Plants"]
+position = Vector2(1438, 473)
+texture = ExtResource("3_53kum")
+offset = Vector2(0, -28)
+
+[node name="Plant6" type="Sprite2D" parent="Ground Cover/Plants"]
+position = Vector2(1290, 628)
+texture = ExtResource("3_53kum")
+offset = Vector2(0, -28)
+
+[node name="Plant7" type="Sprite2D" parent="Ground Cover/Plants"]
+position = Vector2(1263, 648)
+texture = ExtResource("3_53kum")
+offset = Vector2(0, -28)
+
+[node name="Plant8" type="Sprite2D" parent="Ground Cover/Plants"]
+position = Vector2(1369, 904)
+texture = ExtResource("3_53kum")
+offset = Vector2(0, -28)
+
+[node name="Plant9" type="Sprite2D" parent="Ground Cover/Plants"]
+position = Vector2(182, 939)
+texture = ExtResource("3_53kum")
+offset = Vector2(0, -28)
+
+[node name="Plant10" type="Sprite2D" parent="Ground Cover/Plants"]
+position = Vector2(281, 699)
+texture = ExtResource("3_53kum")
+offset = Vector2(0, -28)
+
+[node name="Plant11" type="Sprite2D" parent="Ground Cover/Plants"]
+position = Vector2(661, 743)
+texture = ExtResource("3_53kum")
+offset = Vector2(0, -28)
+
+[node name="Plant12" type="Sprite2D" parent="Ground Cover/Plants"]
+position = Vector2(1149, 289)
+texture = ExtResource("3_53kum")
+offset = Vector2(0, -28)
+
+[node name="Plant13" type="Sprite2D" parent="Ground Cover/Plants"]
+position = Vector2(1814, 121)
+texture = ExtResource("3_53kum")
+offset = Vector2(0, -28)
+
+[node name="Plant14" type="Sprite2D" parent="Ground Cover/Plants"]
+position = Vector2(444, 74)
+texture = ExtResource("3_53kum")
+offset = Vector2(0, -28)
+
+[node name="Rocks" type="Node2D" parent="Ground Cover"]
+
+[node name="Rock" type="Sprite2D" parent="Ground Cover/Rocks"]
+position = Vector2(472, 97)
+texture = ExtResource("4_l6pm2")
+offset = Vector2(0, -9)
+
+[node name="Rock2" type="Sprite2D" parent="Ground Cover/Rocks"]
+position = Vector2(575, 566)
+texture = ExtResource("4_l6pm2")
+offset = Vector2(0, -9)
+
+[node name="Rock3" type="Sprite2D" parent="Ground Cover/Rocks"]
+position = Vector2(1272, 825)
+texture = ExtResource("4_l6pm2")
+offset = Vector2(0, -9)
+
+[node name="Rock4" type="Sprite2D" parent="Ground Cover/Rocks"]
+position = Vector2(1578, 345)
+texture = ExtResource("4_l6pm2")
+offset = Vector2(0, -9)
+
+[node name="Rock5" type="Sprite2D" parent="Ground Cover/Rocks"]
+position = Vector2(551, 578)
+texture = ExtResource("4_l6pm2")
+offset = Vector2(0, -9)
+
+[node name="Rock6" type="Sprite2D" parent="Ground Cover/Rocks"]
+position = Vector2(1712, 768)
+texture = ExtResource("4_l6pm2")
+offset = Vector2(0, -9)
+
+[node name="Rock7" type="Sprite2D" parent="Ground Cover/Rocks"]
+position = Vector2(1664, 816)
+texture = ExtResource("4_l6pm2")
+offset = Vector2(0, -9)
+
+[node name="Rock8" type="Sprite2D" parent="Ground Cover/Rocks"]
+position = Vector2(180, 116)
+texture = ExtResource("4_l6pm2")
+offset = Vector2(0, -9)
+
+[node name="Rock9" type="Sprite2D" parent="Ground Cover/Rocks"]
+position = Vector2(1300, 207)
+texture = ExtResource("4_l6pm2")
+offset = Vector2(0, -9)
+
+[node name="Rock10" type="Sprite2D" parent="Ground Cover/Rocks"]
+position = Vector2(282, 1042)
+texture = ExtResource("4_l6pm2")
+offset = Vector2(0, -9)
+
+[node name="Rock11" type="Sprite2D" parent="Ground Cover/Rocks"]
+position = Vector2(351, 944)
+texture = ExtResource("4_l6pm2")
+offset = Vector2(0, -9)
+
+[node name="Rock12" type="Sprite2D" parent="Ground Cover/Rocks"]
+position = Vector2(772, 946)
+texture = ExtResource("4_l6pm2")
+offset = Vector2(0, -9)
+
+[node name="Rock13" type="Sprite2D" parent="Ground Cover/Rocks"]
+position = Vector2(413, 378)
+texture = ExtResource("4_l6pm2")
+offset = Vector2(0, -9)

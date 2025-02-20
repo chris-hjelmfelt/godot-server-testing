@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://l723t4treyg2"]
+
+[ext_resource type="Script" path="res://scripts/draw_test.gd" id="1_on74s"]
+[ext_resource type="Texture2D" uid="uid://c7x2dbaxn7hl" path="res://images/plant.png" id="2_xy02n"]
+[ext_resource type="Texture2D" uid="uid://cynlb4kx6kxjn" path="res://images/rock.png" id="3_oxrqg"]
+[ext_resource type="Texture2D" uid="uid://bpxqx7jw1walx" path="res://images/marker.png" id="4_roe6p"]
+
+[node name="Draw Test" type="Node2D"]
+script = ExtResource("1_on74s")
+
+[node name="Plant" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(938, 515)
+texture = ExtResource("2_xy02n")
+offset = Vector2(0, -26)
+
+[node name="Rock" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(946, 526)
+texture = ExtResource("3_oxrqg")
+offset = Vector2(0, -9)
+
+[node name="Marker1" type="Sprite2D" parent="."]
+position = Vector2(938, 515)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_roe6p")
+
+[node name="Marker2" type="Sprite2D" parent="."]
+position = Vector2(946, 526)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_roe6p")
